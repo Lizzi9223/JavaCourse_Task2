@@ -1,4 +1,4 @@
-package by.tc.task01.enums;
+package by.tc.task01.entity.criteria;
 
 public final class SearchCriteria {
 

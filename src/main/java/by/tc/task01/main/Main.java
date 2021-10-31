@@ -1,6 +1,6 @@
 package by.tc.task01.main;
 
-import static by.tc.task01.enums.SearchCriteria.*;
+import static by.tc.task01.entity.criteria.SearchCriteria.*;
 
 import by.tc.task01.entity.Appliance;
 import by.tc.task01.entity.criteria.Criteria;
@@ -14,7 +14,7 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		List<Appliance> applianceList = new ArrayList<>();
+		List<Appliance> applianceList;
 
 		ServiceFactory factory = ServiceFactory.getInstance();
 		ApplianceService service = factory.getApplianceService();
@@ -41,6 +41,7 @@ public class Main {
 		try {
 			applianceList = service.find(criteriaOven);
 			PrintApplianceInfo.print(applianceList);
+			service.save(applianceList);
 			applianceList.clear();
 		}
 		catch(Exception exception){
@@ -72,6 +73,7 @@ public class Main {
 		try {
 			applianceList = service.find(criteriaTabletPC);// find(Object...obj)
 			PrintApplianceInfo.print(applianceList);
+			service.save(applianceList);
 			applianceList.clear();
 		}
 		catch(Exception exception){

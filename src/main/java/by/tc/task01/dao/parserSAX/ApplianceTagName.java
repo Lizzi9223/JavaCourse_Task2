@@ -1,4 +1,4 @@
-package by.tc.task01.enums;
+package by.tc.task01.dao.parserSAX;
 
 public enum ApplianceTagName {
 
@@ -31,4 +31,4 @@ public enum ApplianceTagName {
     FREQUENCY_RANGE,
     CORD_LENGTH
 
-    }
+}

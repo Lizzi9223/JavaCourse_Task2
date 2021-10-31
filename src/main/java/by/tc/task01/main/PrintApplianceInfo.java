@@ -11,7 +11,7 @@ public class PrintApplianceInfo {
 		System.out.println("-------------------------------");
 		if(applianceList.size()>0){
 			for (Appliance appliance : applianceList){
-				System.out.println(appliance.toString());
+				System.out.println(appliance);
 			}
 		}
 		else{

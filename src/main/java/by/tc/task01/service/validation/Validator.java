@@ -1,7 +1,7 @@
 package by.tc.task01.service.validation;
 
 import by.tc.task01.entity.criteria.Criteria;
-import by.tc.task01.enums.SearchCriteria;
+import by.tc.task01.entity.criteria.SearchCriteria;
 
 public class Validator {
 

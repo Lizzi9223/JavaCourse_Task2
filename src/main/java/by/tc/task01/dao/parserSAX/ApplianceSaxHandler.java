@@ -1,7 +1,6 @@
-package by.tc.task01.dao.parser;
+package by.tc.task01.dao.parserSAX;
 
 import by.tc.task01.entity.*;
-import by.tc.task01.enums.ApplianceTagName;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
@@ -146,7 +145,6 @@ public class ApplianceSaxHandler extends DefaultHandler {
             case TABLET_PC: applianceList.add(tabletPC); tabletPC=null; break;
             case VACUUM_CLEANER: applianceList.add(vacuumCleaner); vacuumCleaner=null; break;
         }
-
 
 
     }
