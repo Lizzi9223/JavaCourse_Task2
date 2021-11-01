@@ -15,6 +15,7 @@ public class Main {
 	public static void main(String[] args) {
 
 		List<Appliance> applianceList;
+		List<Appliance> saveApplianceList = new ArrayList<>();
 
 		ServiceFactory factory = ServiceFactory.getInstance();
 		ApplianceService service = factory.getApplianceService();
@@ -27,6 +28,7 @@ public class Main {
 		try {
 			applianceList = service.find(criteriaLaptop);
 			PrintApplianceInfo.print(applianceList);
+			saveApplianceList.addAll(applianceList);
 			applianceList.clear();
 		}
 		catch(Exception exception){
@@ -37,11 +39,12 @@ public class Main {
 
 		Criteria criteriaOven = new Criteria(Oven.class.getSimpleName());//"Oven"
 		criteriaOven.add(Oven.CAPACITY.toString(), 33);
+		criteriaOven.add(Oven.HEIGHT.toString(), 40.0);
 
 		try {
 			applianceList = service.find(criteriaOven);
 			PrintApplianceInfo.print(applianceList);
-			service.save(applianceList);
+			saveApplianceList.addAll(applianceList);
 			applianceList.clear();
 		}
 		catch(Exception exception){
@@ -57,6 +60,7 @@ public class Main {
 		try {
 			applianceList = service.find(criteriaOven);
 			PrintApplianceInfo.print(applianceList);
+			saveApplianceList.addAll(applianceList);
 			applianceList.clear();
 		}
 		catch(Exception exception){
@@ -73,12 +77,14 @@ public class Main {
 		try {
 			applianceList = service.find(criteriaTabletPC);// find(Object...obj)
 			PrintApplianceInfo.print(applianceList);
-			service.save(applianceList);
+			saveApplianceList.addAll(applianceList);
 			applianceList.clear();
 		}
 		catch(Exception exception){
 			System.out.println(exception.getMessage());
 		}
+
+		service.save(saveApplianceList);
 
 	}
 

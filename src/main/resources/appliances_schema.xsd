@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://www.epam.tc.com/appliances"
+        xmlns:tns="http://www.epam.tc.com/appliances">
+
+    <element name="appliance-list">
+        <complexType>
+            <choice maxOccurs="unbounded">
+                <element name="laptop" type="tns:Laptop" minOccurs="0" maxOccurs="unbounded"/>
+                <element name="oven" type="tns:Oven" minOccurs="0" maxOccurs="unbounded"/>
+                <element name="refrigerator" type="tns:Refrigerator" minOccurs="0" maxOccurs="unbounded"/>
+                <element name="speakers" type="tns:Speakers" minOccurs="0" maxOccurs="unbounded"/>
+                <element name="tablet-pc" type="tns:TabletPC" minOccurs="0" maxOccurs="unbounded"/>
+                <element name="vacuum-cleaner" type="tns:VacuumCleaner" minOccurs="0" maxOccurs="unbounded"/>
+            </choice>
+        </complexType>
+    </element>
+
+    <complexType name="Laptop">
+        <sequence>
+            <element name="battery-capacity" type="float"/>
+            <element name="os" type="string"/>
+            <element name="memory-rom" type="int"/>
+            <element name="system-memory" type="int"/>
+            <element name="cpu" type="string"/>
+            <element name="display-inches" type="int"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="Oven">
+        <sequence>
+            <element name="power-consumption" type="int"/>
+            <element name="weight" type="int"/>
+            <element name="capacity" type="int"/>
+            <element name="depth" type="int"/>
+            <element name="height" type="float"/>
+            <element name="width" type="float"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="Refrigerator">
+        <sequence>
+            <element name="power-consumption" type="int"/>
+            <element name="weight" type="int"/>
+            <element name="freezer-capacity" type="int"/>
+            <element name="overall-capacity" type="float"/>
+            <element name="height" type="int"/>
+            <element name="width" type="int"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="Speakers">
+        <sequence>
+            <element name="power-consumption" type="int"/>
+            <element name="number-of-speakers" type="int"/>
+            <element name="frequency-range" type="string"/>
+            <element name="cord-length" type="int"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="TabletPC">
+        <sequence>
+            <element name="battery-capacity" type="int"/>
+            <element name="display-inches" type="int"/>
+            <element name="memory-rom" type="int"/>
+            <element name="flash-memory-capacity" type="int"/>
+            <element name="color" type="string"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="VacuumCleaner">
+        <sequence>
+            <element name="power-consumption" type="int"/>
+            <element name="filter-type" type="string"/>
+            <element name="bag-type" type="string"/>
+            <element name="wand-type" type="string"/>
+            <element name="motor-speed-regulation" type="int"/>
+            <element name="cleaning-width" type="int"/>
+        </sequence>
+    </complexType>
+
+</schema>

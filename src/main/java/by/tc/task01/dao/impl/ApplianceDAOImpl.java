@@ -2,23 +2,18 @@ package by.tc.task01.dao.impl;
 
 
 import by.tc.task01.dao.ApplianceDAO;
+import by.tc.task01.dao.Constant;
 import by.tc.task01.dao.filter.*;
 import by.tc.task01.dao.parserDOM.ApplianceDOMWriter;
-import by.tc.task01.dao.parserDOM.element_creator.*;
 import by.tc.task01.dao.parserSAX.ApplianceSaxHandler;
 import by.tc.task01.entity.*;
 import by.tc.task01.entity.criteria.Criteria;
-import by.tc.task01.entity.criteria.SearchCriteria;
-import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParserFactory;
 import javax.xml.transform.TransformerException;
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -44,9 +39,9 @@ public class ApplianceDAOImpl implements ApplianceDAO{
 		try{
 			applianceList = getApplianceList();
 		}
-		catch (ParserConfigurationException e) {}
-		catch (SAXException e){}
-		catch (IOException e){}
+		catch (ParserConfigurationException | SAXException | IOException exception){
+			throw new RuntimeException();
+		}
 	}
 
 	public List<Appliance> find(Criteria criteria) {
@@ -76,14 +71,9 @@ public class ApplianceDAOImpl implements ApplianceDAO{
 
 		ApplianceSaxHandler handler = new ApplianceSaxHandler();
 
-		try{
-			File resource = new File(Thread.currentThread().getContextClassLoader().getResource("appliances_db.xml").toURI());
-			parser.parse(resource, handler);
-		}
-		catch (URISyntaxException e){}
+		parser.parse(Constant.FIND_FROM_FILE_PATH, handler);
 
 		return handler.getApplianceList();
-
 	}
 
 	public void save(List<Appliance> applianceList){
@@ -91,9 +81,9 @@ public class ApplianceDAOImpl implements ApplianceDAO{
 		try{
 			applianceDOMWriter.saveAppliances(applianceList);
 		}
-		catch (ParserConfigurationException exception){}
-		catch (IOException exception) {}
-		catch (TransformerException exception) {}
+		catch (ParserConfigurationException | IOException | TransformerException exception){
+			throw new RuntimeException();
+		}
 	}
 
 

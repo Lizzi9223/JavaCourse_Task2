@@ -8,7 +8,6 @@ import org.xml.sax.helpers.DefaultHandler;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class ApplianceSaxHandler extends DefaultHandler {
 
     private static List<Appliance> applianceList = new ArrayList<>();
@@ -38,10 +37,10 @@ public class ApplianceSaxHandler extends DefaultHandler {
 
         text = new StringBuilder();
 
-        ApplianceTagName tagName = ApplianceTagName.valueOf(qName.toUpperCase().replace("-","_"));
+        ApplianceTagName tagName = ApplianceTagName.valueOf(qName.replace(":","-").toUpperCase().replaceAll("-","_"));
 
         switch (tagName){
-            case APPLIANCE_LIST: break;
+            case APP_APPLIANCE_LIST: break;
             case LAPTOP: {
                 applianceTagName = ApplianceTagName.LAPTOP;
                 laptop = new Laptop();
@@ -74,7 +73,7 @@ public class ApplianceSaxHandler extends DefaultHandler {
     @Override
     public void endElement(String uri, String localName, String qName) throws SAXException {
 
-        ApplianceTagName tagName = ApplianceTagName.valueOf(qName.toUpperCase().replace("-","_"));
+        ApplianceTagName tagName = ApplianceTagName.valueOf(qName.replace(":","-").toUpperCase().replace("-","_"));
 
         switch (applianceTagName){
             case LAPTOP:{
@@ -145,7 +144,5 @@ public class ApplianceSaxHandler extends DefaultHandler {
             case TABLET_PC: applianceList.add(tabletPC); tabletPC=null; break;
             case VACUUM_CLEANER: applianceList.add(vacuumCleaner); vacuumCleaner=null; break;
         }
-
-
     }
 }

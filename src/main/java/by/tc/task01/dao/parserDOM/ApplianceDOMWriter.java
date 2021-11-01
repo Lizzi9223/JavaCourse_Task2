@@ -1,8 +1,8 @@
 package by.tc.task01.dao.parserDOM;
 
+import by.tc.task01.dao.Constant;
 import by.tc.task01.dao.parserDOM.element_creator.*;
 import by.tc.task01.entity.*;
-import by.tc.task01.entity.criteria.SearchCriteria;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
@@ -14,10 +14,8 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.net.URISyntaxException;
 import java.util.List;
 import static java.util.Map.entry;
 import java.util.Map;
@@ -61,7 +59,9 @@ public class ApplianceDOMWriter {
         TransformerFactory transformerFactory = TransformerFactory.newInstance();
         Transformer transformer = transformerFactory.newTransformer();
         DOMSource source = new DOMSource(document);
-        StreamResult result = new StreamResult("D:\\EpamJavaCourse\\jwd-task01-template_v2\\src\\main\\resources\\appliances_new.xml");
+
+        StreamResult result = new StreamResult(new FileWriter(Constant.SAVE_TO_FILE_PATH));
         transformer.transform(source, result);
+
     }
 }

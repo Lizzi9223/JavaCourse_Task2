@@ -2,7 +2,7 @@ package by.tc.task01.dao.parserSAX;
 
 public enum ApplianceTagName {
 
-    APPLIANCE_LIST,
+    APP_APPLIANCE_LIST,
 
     LAPTOP, OVEN, REFRIGERATOR, SPEAKERS, TABLET_PC, VACUUM_CLEANER,
 
